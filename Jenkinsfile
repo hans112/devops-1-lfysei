@@ -1,3 +1,4 @@
+```groovy
 pipeline {
     agent any
 
@@ -6,22 +7,23 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building Wizard Almanac...'
-                sh 'docker compose build'
+                bat 'docker compose build'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing Wizard Almanac...'
-                sh 'docker compose config'
+                bat 'docker compose config'
             }
         }
 
         stage('Start') {
             steps {
                 echo 'Starting Wizard Almanac...'
-                sh 'docker compose up -d'
+                bat 'docker compose up -d'
             }
         }
     }
 }
+```
