@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../TerraformProjecten/strongroot-v27-fixed"
+		},
+		{
+			"path": "../../TerraformProjecten/Terraform-Aws-Eks"
+		}
+	],
+	"settings": {}
+}
