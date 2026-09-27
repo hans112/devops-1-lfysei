@@ -6,7 +6,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building Wizard Almanac and Jenkins...'
-                bat 'docker compose build app jenkins'
+                bat '''
+                    set DOCKER_BUILDKIT=0
+                    docker compose build app jenkins
+                '''
             }
         }
 
