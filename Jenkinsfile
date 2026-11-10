@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -5,26 +6,33 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building Wizard Almanac and Jenkins...'
-                bat '''
-                    set DOCKER_BUILDKIT=0
-                    docker compose build app jenkins
-                '''
+                echo 'Building Wizard Almanac...'
+                sh 'docker compose build app'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Testing Wizard Almanac...'
-                bat 'docker compose config'
+                sh 'docker compose config -q'
+                echo 'Docker Compose configuration is valid!'
             }
         }
 
         stage('Start') {
             steps {
                 echo 'Starting Wizard Almanac...'
-                bat 'docker compose up -d'
+                sh 'docker compose up -d app'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Wizard Almanac started successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Check Console Output.'
         }
     }
 }
