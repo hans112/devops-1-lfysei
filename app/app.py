@@ -5,7 +5,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Welcome to the Wizard's Almanac"
+
+    return "Welcome! This is my first CI/CD project, deploying a Python application from GitHub to AWS using Jenkins and Docker."
 
 
 if __name__ == "__main__":
